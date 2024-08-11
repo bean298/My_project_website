@@ -1,0 +1,98 @@
+/* MEDIA QUERIES */
+
+/* PC */
+@media (min-width: 1024px) {}
+
+/* TABLET VÀ MOBILE */
+@media (max-width:1023px) {
+    .place-buy-button{
+        padding: 15px 16px;
+    }
+
+    #nav .sub a{
+        padding: 5px 12px;
+    }
+
+    .contact-form .form-control{     /* thanh input ở contact */
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .contact-information{      
+        line-height: 2;
+    }
+
+    .contact-form .form-submit-button{       /* nút SEND */
+        font-size: 16px;
+    }
+
+    #footer .socials-icon a{       /* icon */
+        margin: 0 8px;
+    }
+
+    #footer .socials-content a{      /* chữ w3.css */
+        padding: 12px 0;
+        display: inline-block;
+    }
+}
+
+/* TABLET */
+@media (min-width: 740px) and (max-width: 1024px) {}
+
+/* MOBILE */
+@media (max-width: 740px) {
+    .s-full-width,
+    .s-column-full{            /* code common để làm content chuyển thành dọc */
+        width: 100% !important;
+    }
+
+    .s-margin-top8{
+        margin-top: 8px !important;
+    }
+
+    #header{
+        overflow: hidden;
+    }
+
+    #header .search-icon{       /* ẩn buttontìm kiếm */
+        display: none;
+    }
+
+    #header .mobile-menu-btn{         /* hiện button menu */
+        display: block;
+    }
+
+    #nav{                            /* để các nav ăn hết kích thước header */
+        display: block;
+    }
+
+    #nav > li{                       /* để dòng chữ đi theo hàng dọc */
+        display: block; 
+    }    
+
+    #nav li a{
+        padding: 1px 24px;
+    }
+
+    #nav > li:first-child{          /* chỉnh HOME sao cho ăn đúng kích thước thẻ */
+        display: inline-block;
+    } 
+
+    #nav .subnav{                   /* để có thể hiện dòng subnav */
+        position: initial;
+        background: #333;
+    }
+
+    #nav .subnav a{                 
+        color: #fff;
+        padding: 5px 41px;
+    }
+
+    #content .member-img{            /* 50% đối với mọi thiết bị mobile */
+        width: 50%;
+    }
+
+    .contact-form{
+        margin-top: 32px;
+    }
+}
