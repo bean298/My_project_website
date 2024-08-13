@@ -1,0 +1,70 @@
+{
+  "songList": [
+    {
+      "name": "A Lot",
+      "singer": "21 Savage",
+      "path": "./assets/songs/a lot.mp3",
+      "image": "./assets/img/a lot.jpg"
+    },
+    {
+      "name": "Diamonds",
+      "singer": "Rihanna ",
+      "path": "./assets/songs/diamonds.mp3",
+      "image": "./assets/img/diamonds.jpg"
+    },
+    {
+      "name": "FE!N",
+      "singer": "Travis Scott ft. Playboi Carti",
+      "path": "./assets/songs/fe!n.mp3",
+      "image": "./assets/img/fe!n.webp"
+    },
+    {
+      "name": "Not Like Us",
+      "singer": "Kendrick Lamar",
+      "path": "./assets/songs/not like us.mp3",
+      "image": "./assets/img/not like us.jpg"
+    },
+    {
+      "name": "Drip Too Hard",
+      "singer": "Lil Baby x Gunna",
+      "path": "./assets/songs/drip too hard.mp3",
+      "image": "./assets/img/drip too hard.jpg"
+    },
+    {
+      "name": "Mockingbird ",
+      "singer": "Eminem",
+      "path": "./assets/songs/mockingbird.mp3",
+      "image": "./assets/img/mockingbird.jpg"
+    },
+    {
+      "name": "After Hours",
+      "singer": "The Weekend",
+      "path": "./assets/songs/after hours.mp3",
+      "image": "./assets/img/after hours.webp"
+    },
+    {
+      "name": "GIAYPHUT",
+      "singer": "kidsai ",
+      "path": "./assets/songs/giayphut.mp3",
+      "image": "./assets/img/giayphut.jpg"
+    },
+    {
+      "name": "XANGUTNGAN",
+      "singer": "Young Bo5",
+      "path": "./assets/songs/xangutngan.mp3",
+      "image": "./assets/img/xangutngan.jpg"
+    },
+    {
+      "name": "Buồn Hay Vui",
+      "singer": "VSOUL x MCK x Obito x Ronboogz x Boyzed",
+      "path": "./assets/songs/buồn hay vui.mp3",
+      "image": "./assets/img/buồn hay vui.jpg"
+    },
+    {
+      "name": "Cuộc gọi lúc nửa đêm",
+      "singer": "AMEE",
+      "path": "./assets/songs/cuộc gọi lúc nửa đêm.mp3",
+      "image": "./assets/img/cuôc gọ lúc nửa đêm.jpg"
+    }
+  ]
+}
