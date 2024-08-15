@@ -4,6 +4,9 @@ const $$ = document.querySelectorAll.bind(document);
 
 const PLAYER_STORAGE_KEY = "Bean";
 
+const songAPI = "http://localhost:3000/songList";
+const alternativeAPI = "./database/db.json";
+
 const playlist = $(".playlist");
 const heading = $("header h2");
 const cd = $(".cd");
@@ -16,6 +19,41 @@ const nextBtn = $(".btn-next");
 const prevBtn = $(".btn-prev");
 const repeatBtn = $(".btn-repeat");
 const randomBtn = $(".btn-random");
+
+var songs = {};
+
+async function init() {
+  try {
+    const res = await fetch(songAPI);
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    } else {
+      const data = await res.json();
+      songs = data.songList || data;
+      app.start();
+    }
+  } catch (error) {
+    console.error("Error fetching songs: ", error);
+    fetchAlternativeData();
+  }
+}
+
+async function fetchAlternativeData() {
+  console.log("Starting fetchAlternativeData fucntion");
+  try {
+    const res = await fetch(alternativeAPI);
+    if (!res.ok) {
+      console.log("Network response was not ok from alternativeAPI");
+      throw new Error("Network response was not ok");
+    } else {
+      const data = await res.json();
+      songs = data.songList || data;
+      app.start();
+    }
+  } catch (error) {
+    console.log("Error fetching alternative data: ", error);
+  }
+}
 
 const app = {
   currentIndex: 0,
@@ -48,7 +86,7 @@ const app = {
     // Property currentSong contain current song
     Object.defineProperty(this, "currentSong", {
       get: function () {
-        return this.songList[this.currentIndex];
+        return songs[Object.keys(songs)[this.currentIndex]];
       },
     });
   },
@@ -63,78 +101,9 @@ const app = {
     }, 100);
   },
 
-  songList: [
-    {
-      name: "A Lot",
-      singer: "21 Savage",
-      path: "./assets/songs/a lot.mp3",
-      image: "./assets/img/a lot.jpg",
-    },
-    {
-      name: "Diamonds",
-      singer: "Rihanna ",
-      path: "./assets/songs/diamonds.mp3",
-      image: "./assets/img/diamonds.jpg",
-    },
-    {
-      name: "FE!N",
-      singer: "Travis Scott ft. Playboi Carti",
-      path: "./assets/songs/fe!n.mp3",
-      image: "./assets/img/fe!n.webp",
-    },
-    {
-      name: "Not Like Us",
-      singer: "Kendrick Lamar",
-      path: "./assets/songs/not like us.mp3",
-      image: "./assets/img/not like us.jpg",
-    },
-    {
-      name: "Drip Too Hard",
-      singer: "Lil Baby x Gunna",
-      path: "./assets/songs/drip too hard.mp3",
-      image: "./assets/img/drip too hard.jpg",
-    },
-    {
-      name: "Mockingbird ",
-      singer: "Eminem",
-      path: "./assets/songs/mockingbird.mp3",
-      image: "./assets/img/mockingbird.jpg",
-    },
-    {
-      name: "After Hours",
-      singer: "The Weekend",
-      path: "./assets/songs/after hours.mp3",
-      image: "./assets/img/after hours.webp",
-    },
-    {
-      name: "GIAYPHUT",
-      singer: "kidsai ",
-      path: "./assets/songs/giayphut.mp3",
-      image: "./assets/img/giayphut.jpg",
-    },
-    {
-      name: "XANGUTNGAN",
-      singer: "Young Bo5",
-      path: "./assets/songs/xangutngan.mp3",
-      image: "./assets/img/xangutngan.jpg",
-    },
-    {
-      name: "Buồn Hay Vui",
-      singer: "VSOUL x MCK x Obito x Ronboogz x Boyzed",
-      path: "./assets/songs/buồn hay vui.mp3",
-      image: "./assets/img/buồn hay vui.jpg",
-    },
-    {
-      name: "Cuộc gọi lúc nửa đêm",
-      singer: "AMEE",
-      path: "./assets/songs/cuộc gọi lúc nửa đêm.mp3",
-      image: "./assets/img/cuôc gọ lúc nửa đêm.jpg",
-    },
-  ],
-
   // Render into view
   render: function () {
-    const html = this.songList.map((song, index) => {
+    const html = songs.map((song, index) => {
       return `
             <div class="song ${
               index === this.currentIndex ? "active" : ""
@@ -311,7 +280,7 @@ const app = {
   // Click btn next
   nextSong: function () {
     this.currentIndex++;
-    if (this.currentIndex >= this.songList.length) {
+    if (this.currentIndex >= songs.length) {
       this.currentIndex = 0;
     }
     this.loadCurrentSong();
@@ -321,7 +290,7 @@ const app = {
   prevSong: function () {
     this.currentIndex--;
     if (this.currentIndex < 0) {
-      this.currentIndex = this.songList.length - 1;
+      this.currentIndex = songs.length - 1;
     }
     this.loadCurrentSong();
   },
@@ -330,14 +299,31 @@ const app = {
   randomSong: function () {
     var randomIndex;
     do {
-      randomIndex = Math.floor(Math.random() * this.songList.length);
+      randomIndex = Math.floor(Math.random() * songs.length);
     } while (randomIndex === this.currentIndex);
 
     this.currentIndex = randomIndex;
     this.loadCurrentSong();
   },
 
-  start: function () {
+  // start: function () {
+  //   // Load config
+  //   this.loadConfig();
+  //   this.setupToConfig();
+
+  //   // Define properties for object
+  //   this.defineProperties();
+
+  //   // Listen, handle event
+  //   this.handleEvents();
+
+  //   // Load the first song in list when open web
+  //   this.loadCurrentSong();
+
+  //   // Render
+  //   this.render();
+  // },
+  init() {
     // Load config
     this.loadConfig();
     this.setupToConfig();
@@ -354,7 +340,14 @@ const app = {
     // Render
     this.render();
   },
+
+  start() {
+    console.log("App starting...");
+    this.init();
+  },
 };
 
 // Run everything in here
-app.start();
+// app.start();
+
+init();
