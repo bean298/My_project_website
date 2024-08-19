@@ -5,6 +5,7 @@ const $$ = document.querySelectorAll.bind(document);
 const PLAYER_STORAGE_KEY = "Bean";
 
 const songAPI = "http://localhost:3000/songList";
+const favoriteSongAPI = "http://localhost:3000/favoriteSongList";
 const alternativeAPI = "./database/db.json";
 
 const playlist = $(".playlist");
@@ -243,6 +244,7 @@ const app = {
     playlist.onclick = function (e) {
       const songNode = e.target.closest(".song:not(.active)");
       const optionNode = e.target.closest(".option");
+      const favoriteBtn = e.target.closest(".favoriteBtn");
 
       // closest return itself or parent tag, if don't have = null
       if (songNode || optionNode) {
@@ -252,6 +254,12 @@ const app = {
           _this.loadCurrentSong();
           _this.render();
           audio.play();
+        }
+
+        if (favoriteBtn) {
+          const songIndex = Number(favoriteBtn.closest(".song").dataset.index);
+          const song = songs[songIndex];
+          _this.addToFavorite(song);
         }
 
         // Handle event click into option
@@ -306,23 +314,52 @@ const app = {
     this.loadCurrentSong();
   },
 
-  // start: function () {
-  //   // Load config
-  //   this.loadConfig();
-  //   this.setupToConfig();
+  addToFavorite: function (song) {
+    const favoriteSong = {
+      name: song.name,
+      singer: song.singer,
+      path: song.path,
+      image: song.image,
+      id: song.id,
+    };
 
-  //   // Define properties for object
-  //   this.defineProperties();
+    fetch(favoriteSongAPI, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(favoriteSong),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Đã thêm vào yêu thích");
+      });
 
-  //   // Listen, handle event
-  //   this.handleEvents();
+    // fetch(favoriteSongAPI)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     var favoriteSongList = {
+    //       name: song.name,
+    //       singer: song.singer,
+    //       path: song.path,
+    //       image: song.image,
+    //       id: song.id,
+    //     };
+    //     fetch(favoriteSongAPI, {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify(favoriteSongList),
+    //     })
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         console.log("Danh sách yêu thích đã được cập nhật", data);
+    //       });
+    //   });
+  },
 
-  //   // Load the first song in list when open web
-  //   this.loadCurrentSong();
-
-  //   // Render
-  //   this.render();
-  // },
   init() {
     // Load config
     this.loadConfig();
@@ -346,8 +383,5 @@ const app = {
     this.init();
   },
 };
-
-// Run everything in here
-// app.start();
 
 init();
