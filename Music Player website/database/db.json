@@ -99,13 +99,6 @@
       "singer": "21 Savage",
       "path": "./assets/songs/a lot.mp3",
       "image": "./assets/img/a lot.jpg"
-    },
-    {
-      "id": "855d",
-      "name": "GIAYPHUT",
-      "singer": "kidsai ",
-      "path": "./assets/songs/giayphut.mp3",
-      "image": "./assets/img/giayphut.jpg"
     }
   ]
 }

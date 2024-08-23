@@ -334,30 +334,6 @@ const app = {
       .then((data) => {
         console.log("Đã thêm vào yêu thích");
       });
-
-    // fetch(favoriteSongAPI)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     var favoriteSongList = {
-    //       name: song.name,
-    //       singer: song.singer,
-    //       path: song.path,
-    //       image: song.image,
-    //       id: song.id,
-    //     };
-    //     fetch(favoriteSongAPI, {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(favoriteSongList),
-    //     })
-    //       .then((response) => response.json())
-    //       .then((data) => {
-    //         console.log("Danh sách yêu thích đã được cập nhật", data);
-    //       });
-    //   });
   },
 
   init() {
