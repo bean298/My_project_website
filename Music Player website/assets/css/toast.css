@@ -1,0 +1,82 @@
+#toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 20px 0;
+  border-left: 4px solid;
+  z-index: 100;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+}
+
+.toast + .toast {
+  margin-top: 20px;
+}
+
+.toast__icon {
+  font-size: 24px;
+}
+
+.toast__icon,
+.toast__close {
+  padding: 0px 16px;
+}
+
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.toast__msg {
+  font-size: 14px;
+  margin-top: 6px;
+  color: #888;
+}
+
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  opacity: 1;
+}
+
+.toast__close:hover {
+  opacity: 0.5;
+}
+
+.toast--success {
+  border-color: #47d864;
+}
+
+.toast--success .toast__icon {
+  color: #47d864;
+}
+
+/* Keyframes */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(calc(100% + 32px)); /* + 32: because right: 32px */
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}

@@ -21,7 +21,7 @@ html {
 .listBtn {
   position: absolute;
   top: 10px;
-  right: 16px;
+  left: 16px;
   font-size: 24px;
   color: #fff;
   position: fixed;
@@ -238,6 +238,10 @@ header h2 {
   top: 37px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   width: 130px;
+}
+
+.song .option.active .option_menu:hover {
+  color: #ec1f55;
 }
 
 .song .option.active .option_menu li {

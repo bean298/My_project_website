@@ -242,6 +242,7 @@ const app = {
 
     // Listen event select song
     playlist.onclick = function (e) {
+      e.preventDefault();
       const songNode = e.target.closest(".song:not(.active)");
       const optionNode = e.target.closest(".option");
       const favoriteBtn = e.target.closest(".favoriteBtn");
@@ -332,7 +333,12 @@ const app = {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Đã thêm vào yêu thích");
+        toast({
+          title: "Success",
+          message: "Thêm vào yêu thích thành công",
+          type: "success",
+          duration: 5000,
+        });
       });
   },
 

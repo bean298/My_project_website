@@ -85,20 +85,5 @@
       "id": "1084"
     }
   ],
-  "favoriteSongList": [
-    {
-      "id": "4690",
-      "name": "Mockingbird ",
-      "singer": "Eminem",
-      "path": "./assets/songs/mockingbird.mp3",
-      "image": "./assets/img/mockingbird.jpg"
-    },
-    {
-      "id": "bbac",
-      "name": "A Lot",
-      "singer": "21 Savage",
-      "path": "./assets/songs/a lot.mp3",
-      "image": "./assets/img/a lot.jpg"
-    }
-  ]
+  "favoriteSongList": []
 }
